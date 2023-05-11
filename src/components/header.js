@@ -4,7 +4,7 @@ import SaveDropDown from "./saveDropDown";
 
 function Header() {
     return ( 
-        <View className="w-full h-[50px] flex flex-row bg-black">
+        <View className="w-full h-[10%] flex flex-row bg-header">
             <View className="flex flex-row items-start">
                 <View className="flex flex-col justify-around h-full">
                     <Logo/>

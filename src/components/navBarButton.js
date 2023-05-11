@@ -1,13 +1,24 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity} from "react-native";
 
-function Logo() {
-    return ( 
-        <TouchableOpacity className={`bg-white justify-center w-[50px] ml-3 text-blue`}>
-            <Text className="text-black text-center text-lg ">
-                Logo
-            </Text>
+function NavBarButton({isSelected, children, onPress, isNext, isPrevious}) {
+    let classes;
+    if (isSelected) {
+        classes = "bg-drawer";
+    }
+    else if (isPrevious) {
+        classes = "bg-navbar rounded-br-3xl";
+    }
+    else if (isNext) {
+        classes = "bg-navbar rounded-tr-3xl";
+    }
+    else {
+        classes = "bg-navbar";
+    }
+    return (
+        <TouchableOpacity activeOpacity={1} onPress={onPress} className={`${classes} justify-center flex flex-col w-full h-16`}>
+            {children}
         </TouchableOpacity>
     );
 }
 
-export default Logo;
+export default NavBarButton;
