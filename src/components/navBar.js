@@ -2,28 +2,36 @@ import { View, Text, Image  } from "react-native";
 import NavBarButton from "./navBarButton";
 import { useState, useContext } from "react";
 import Drawer from "./drawer";
-import { DrawerContext } from "../context/context";
+import { DrawerContext, TabContext } from "../context/context";
 
 const tabs = [
     {
         imgUrl: require("../assets/Aberturas.png"),
-        text: "Aberturas"
+        text: "Aberturas",
+        url: "https://us-central1-prueba-front-280718.cloudfunctions.net/aberturas"
     },
     {
         imgUrl: require("../assets/Equipamiento.png"),
-        text: "Equipamiento"
+        text: "Equipamiento",
+        url: "https://us-central1-prueba-front-280718.cloudfunctions.net/equipamiento"
     },
     {
         imgUrl: require("../assets/Terminaciones.png"),
-        text: "Terminaciones"
+        text: "Terminaciones",
+        url: "https://us-central1-prueba-front-280718.cloudfunctions.net/terminaciones"
     }
 ]
 
 function NavBar() {
     const [selectedTab, setSelectedTab] = useState();
+    const [selectedCategory, setSelectedCategory] = useState();
+    const [data, setData] = useState();
+    const [loading, setLoading] = useState(false);
     const {showDrawer, setShowDrawer} = useContext(DrawerContext); 
 
     const onPress = (index) => {
+        setSelectedCategory();
+        setLoading(true);
         if (index === selectedTab) {
             setSelectedTab(undefined);
             setShowDrawer(false);
@@ -32,6 +40,19 @@ function NavBar() {
             setSelectedTab(index);
             setShowDrawer(true);
         }
+
+        fetch(tabs[index].url)
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+            setData(json);
+            setLoading(false);
+        })
+        .catch(error => {
+            setLoading(false);
+            console.error(error);
+        });
+
     }
     return ( 
         <View className="z-10 h-[90%] w-full flex flex-row">
@@ -58,7 +79,9 @@ function NavBar() {
                     <NavBarButton isNext={selectedTab === tabs.length - 1}/>
                 </View>
             </View>
-            <Drawer isVisible={showDrawer} tab={tabs[selectedTab]}/>
+            <TabContext.Provider value={{data, tab: tabs[selectedTab], selectedCategory, setSelectedCategory}}>
+                <Drawer isVisible={showDrawer} loading={loading}/>
+            </TabContext.Provider>
         </View>
     );
 }
