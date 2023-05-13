@@ -1,13 +1,13 @@
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, Image } from "react-native";
 
 function Logo() {
     return ( 
-        <TouchableOpacity className={`bg-button justify-center w-[50px] ml-3 text-blue`}>
-            <Text className="text-text text-center text-lg ">
-                Logo
-            </Text>
+        <TouchableOpacity className={`justify-center w-[50px] h-[50px] text-blue`}>
+            <Image className="inset-0 w-full h-full -ml-[6px]" source={require("../assets/Logo.png")}/>
         </TouchableOpacity>
     );
 }
+
+
 
 export default Logo;

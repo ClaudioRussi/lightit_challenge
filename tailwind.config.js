@@ -9,7 +9,8 @@ module.exports = {
         navbar: "#ffffff",
         header: "#333333",
         text: "#4d4d4d",
-        button: "#ededed"
+        button: "#ededed",
+        grayText: "#b3b3b3"
       },
       letterSpacing: {
         tightest: '-0.3em'
