@@ -1,24 +1,18 @@
 import { Text, View } from "react-native";
 import Logo from "./logo";
-import SaveDropDown from "./saveDropDown";
+import Dropdown from "./Dropdown";
 
 function Header() {
     return ( 
-        <View className="w-full h-[10%] flex flex-row bg-header">
-            <View className="flex flex-row items-start">
+        <View className="w-full h-[10%] px-5 flex flex-row justify-between bg-header">
+            <View className="flex flex-row w-[1/2] items-start">
                 <View className="flex flex-col justify-around h-full">
                     <Logo/>
                 </View>
-                <View className="flex flex-col h-full ml-5 justify-around w-[100px]">
-                    <Text className="text-white">Editar medidas</Text>
-                </View>
             </View>
-            <View className="flex flex-row justify-end">
-                <View className="flex flex-col h-full ml-5 justify-around w-[100px]">
-                    <Text className="text-white">Nuevo proyecto</Text>
-                </View>
+            <View className="flex flex-row w-[1/2] items-end overflow-hidden">
                 <View className="flex flex-col justify-around h-full">
-                    <SaveDropDown/>
+                    <Dropdown/>
                 </View>
             </View>
         </View>

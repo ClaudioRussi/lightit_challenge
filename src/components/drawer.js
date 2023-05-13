@@ -16,7 +16,7 @@ function Drawer({isVisible, loading}) {
     return (
         <View className={"h-full bg-drawer p-0 m-0 w-[80%]"}>
             <View className="w-[90%] flex flex-col self-center">
-                {tab && <TouchableOpacity onPress={onPress} className="w-full pb-2 pt-2"><Text className={`${selectedCategory ? "text-sm" : "text-2xl font-bold -tracking-[0.2px]"} text-text`}>{selectedCategory && "< "}{tab.text}</Text></TouchableOpacity>}
+                {tab && <TouchableOpacity onPress={onPress} className="w-full pb-2 pt-2"><Text className={`${selectedCategory ? "text-sm text-grayText" : "text-lg text-text"} -tracking-[0.2px] font-bold`}>{selectedCategory && "< "}{tab.text}</Text></TouchableOpacity>}
                 {
                     (!selectedCategory && data && !loading) && (<View>
                         {
@@ -38,14 +38,14 @@ function Drawer({isVisible, loading}) {
             </View>
             {selectedCategory && (
                 <View className="w-[90%] h-full flex flex-col p-0 m-0 self-center items-around">
-                    <Text className="text-lg font-bold -tracking-[0.2px] text-text">{selectedCategory.name}</Text>
+                    <Text className="text-lg font-bold mb-3 -tracking-[0.2px] text-text">{selectedCategory.name}</Text>
                     <View className="flex-row w-full m-0 flex justify-between items-start">
                         {
                             selectedCategory.items.map((item, index) => {
                                 return (
                                     <View key={index} className="flex flex-col w-20 justify-center">
                                         <Image className="w-20 justify-center h-20" source={{uri: item.img}} />
-                                        <Text className="w-full text-center">{item.name}</Text>
+                                        <Text className="w-full text-center text-xs pt-2">{item.name}</Text>
                                     </View>
                                 )
                             })
