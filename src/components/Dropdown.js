@@ -58,7 +58,7 @@ const Dropdown = () => {
             className="relative w-full h-full justify-end items-end"
           onPress={() => setVisible(false)}
         >
-          <View className="absolute w-[210px] right-5 rounded-md bg-white shadow-black shadow-sm drop-shadow-md" style={{ top: dropdownTop }}>
+          <View className="absolute w-[210px] right-5 lg:right-40 rounded-md bg-white shadow-black shadow-sm drop-shadow-md" style={{ top: dropdownTop }}>
             <FlatList
               data={options}
               renderItem={renderItem}
