@@ -33,8 +33,9 @@ function NavBar() {
         setSelectedCategory();
         setLoading(true);
         if (index === selectedTab) {
-            setSelectedTab(undefined);
+            setSelectedTab();
             setShowDrawer(false);
+            return;
         }
         else {
             setSelectedTab(index);
@@ -54,9 +55,14 @@ function NavBar() {
         });
 
     }
+
+    const closeDrawer = () => {
+        setShowDrawer(false);
+        setSelectedTab();
+    }
     return ( 
-        <View className="z-10 h-[90%] w-full flex flex-row">
-            <View className="h-full w-[20%] justify-center bg-navbar flex flex-col">
+        <View className="z-10 h-[90%] flex flex-row">
+            <View className="h-full w-[20%] lg:w-[7%] justify-center bg-navbar flex flex-col">
                 <View className={`h-16 bg-drawer`}>
                     <NavBarButton isPrevious={selectedTab === 0}/>
                 </View>
@@ -80,7 +86,7 @@ function NavBar() {
                 </View>
             </View>
             <TabContext.Provider value={{data, tab: tabs[selectedTab], selectedCategory, setSelectedCategory}}>
-                <Drawer isVisible={showDrawer} loading={loading}/>
+                <Drawer isVisible={showDrawer} loading={loading} close={closeDrawer}/>
             </TabContext.Provider>
         </View>
     );
