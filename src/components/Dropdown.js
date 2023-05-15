@@ -82,7 +82,7 @@ const Dropdown = () => {
             {selected.label}
         </Text>
       <View className="h-full justify-center border-l-[1px] border-gray-200 pl-3 ">
-        <Image className="-rotate-90 w-5 h-5 mt-3 mb-2 mr-3" source={require("../assets/activo.png")}/>
+        <Image className="-rotate-90 w-6 h-6 mt-3 mb-2 mr-3" source={require("../assets/activo.png")}/>
       </View>
     </TouchableOpacity>
   );
