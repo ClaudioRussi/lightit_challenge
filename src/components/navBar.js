@@ -45,7 +45,6 @@ function NavBar() {
         fetch(tabs[index].url)
         .then(response => response.json())
         .then(json => {
-            console.log(json);
             setData(json);
             setLoading(false);
         })
